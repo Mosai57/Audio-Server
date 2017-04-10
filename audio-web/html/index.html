@@ -1,0 +1,70 @@
+<html>
+	<head>
+		<title> Lyrica Now Playing </title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+		<script type='text/javascript'>
+			function dosomethingcool() {
+			    $.ajax({
+				url: "http://192.168.0.29/cgi-bin/nowplaying-json.pl",
+			        cache: false
+			    })
+			    .done(function( json ) {
+				$("#Title").html(json.Title);
+				$("#Artist").html(json.Artist);
+				$("#Album").html(json.Album);
+				$("#TrackNo").html(json.TrackNo);
+				$("#DiscNo").html(json.DiscNo);
+				$("#Genre").html(json.Genre);
+				$("#ReleaseDate").html(json.ReleaseDate);
+			    });
+			}
+		</script>
+		<style>
+			table, tr, td{
+				font-size: 40px;
+				word-wrap: break-word;
+			}
+			#query{
+				font-size: 30px;
+				height: 250px;
+				width:500px;
+			}
+		</style>
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td> Title </td>
+				<td id="Title"></td>
+			</tr>
+			<tr>
+				<td> Artist </td>
+				<td id="Artist"></td>
+			</tr>
+			<tr>
+				<td> Album </td>
+				<td id="Album"></td>
+			</tr>
+			<tr>
+				<td> Track No. </td>
+				<td id="TrackNo"></td>
+			</tr>
+			<tr>
+				<td> Disc No. </td>
+				<td id="DiscNo"></td>
+			</tr>
+			<tr>
+				<td> Genre </td>
+				<td id="Genre"></td>
+			</tr>
+			<tr>
+				<td> Release Date </td>
+				<td id="ReleaseDate"></td>
+			</tr>
+		</table>
+		<br>
+		<br>
+		<input type='button' id='query' onclick='dosomethingcool()' value='Now Playing'</input>
+		<br>
+	</body>
+</html>
